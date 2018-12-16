@@ -8,18 +8,18 @@ const users = require('./routes/users');
 const mongoose = require("mongoose");
 const config = require('./config/database');
 
-//Connect to database
+//Connect to the database
 mongoose.connect(config.database,{ useNewUrlParser: true });
-//on connection
+
+//On Successful connection
 mongoose.connection.on('connected',()=>{
     console.log('Connected to database',config.database);
 });
 
+//Handle error in the connection
 mongoose.connection.on('error',(err)=>{
     console.log('Database error',err);
 })
-
-
 
 const app = express();
 
@@ -35,6 +35,14 @@ app.use(express.static (path.join(__dirname,'public')));
 //Body Parser middle ware
 app.use(bodyparser.json());
 
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
+
+
+//User Middleware
 app.use('/users',users);
 
 //index Route
@@ -42,6 +50,7 @@ app.get('/',(req,res)=>{
 res.send('Welocome Prajakt Thale');
 })
 
+//Start Server
 app.listen(port,()=>{
     console.log("server started");
 })
