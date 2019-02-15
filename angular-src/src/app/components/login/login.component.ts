@@ -27,7 +27,7 @@ this.authService.authenticateUser(user).subscribe(data=> {
 //console.log(data);
 if(data.success){
   this.authService.storeUserData(data.token,data.user);
-  this.flashMessage.show("Welcome "+data.user,{cssClass:'alert-success',timeout:5000});
+  this.flashMessage.show("Welcome " + data.user.name,{cssClass:'alert-success',timeout:5000});
   this.router.navigate(['/dashboard']);
 
 }else{
