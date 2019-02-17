@@ -5,6 +5,7 @@ const cors = require("cors");
 const passport = require("passport");
 const mangoose = require("mongoose");
 const users = require('./routes/users');
+const tutorials = require('./routes/tutorials');
 const mongoose = require("mongoose");
 const config = require('./config/database');
 
@@ -24,8 +25,8 @@ mongoose.connection.on('error',(err)=>{
 const app = express();
 
 //Port Number
-//const port = 3000;
-const port = process.env.PORT || 8080;
+const port = 3000;
+//const port = process.env.PORT || 8080;
 
 
 //CORS Middleware for cross domain access
@@ -47,9 +48,11 @@ require('./config/passport')(passport);
 //User Middleware
 app.use('/users',users);
 
+app.use('/tutorials',tutorials);
+
 //index Route
 app.get('/',(req,res)=>{
-res.send('Welocome Prajakt Thale');
+res.send('Welcome Prajakt Thale');
 })
 
 //Start Server
