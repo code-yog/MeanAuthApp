@@ -25,8 +25,8 @@ mongoose.connection.on('error',(err)=>{
 const app = express();
 
 //Port Number
-const port = 3000;
-//const port = process.env.PORT || 8080;
+//const port = 3000;
+const port = process.env.PORT || 8080;
 
 
 //CORS Middleware for cross domain access
@@ -52,8 +52,13 @@ app.use('/tutorials',tutorials);
 
 //index Route
 app.get('/',(req,res)=>{
-res.send('Welcome Prajakt Thale');
-})
+res.send('Invalid EndPoint');
+});
+
+//index Route
+app.get('*',(req,res)=>{
+res.sendFile(path.join(__dirname,'public/index.html'));
+});
 
 //Start Server
 app.listen(port,()=>{
