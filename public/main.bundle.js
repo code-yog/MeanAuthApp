@@ -718,7 +718,7 @@ module.exports = ""
 /***/ 685:
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n   <flash-messages></flash-messages>\r\n  <router-outlet></router-outlet>\r\n</div>\r\n"
+module.exports = "<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n   <!-- <flash-messages></flash-messages> -->\r\n  <router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
